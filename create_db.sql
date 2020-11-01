@@ -1,10 +1,13 @@
 CREATE DATABASE  IF NOT EXISTS `shedule`;
 USE `shedule`;
+
+/* Факультет */
 CREATE TABLE `shedule`.`faculty` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` NVARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
 
+/* Кафедра */
 CREATE TABLE `shedule`.`dapartment` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` NVARCHAR(45) NOT NULL,
@@ -17,10 +20,12 @@ CREATE TABLE `shedule`.`dapartment` (
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
 
+/* Пользователь */
 CREATE TABLE `shedule`.`user` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`));
 
+/* Заметка */
 CREATE TABLE `shedule`.`note` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `context` NVARCHAR(200) NULL,
@@ -32,6 +37,8 @@ CREATE TABLE `shedule`.`note` (
     REFERENCES `shedule`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE NO ACTION);
+
+/* Группа */
 CREATE TABLE `shedule`.`group` (
   `number` TINYINT(3) UNSIGNED NOT NULL,
   `course` TINYINT(1) UNSIGNED NOT NULL,
@@ -44,6 +51,7 @@ CREATE TABLE `shedule`.`group` (
     ON DELETE RESTRICT
     ON UPDATE NO ACTION);
 
+/* Студент */
 CREATE TABLE `shedule`.`student` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` INT UNSIGNED NOT NULL,
@@ -63,7 +71,7 @@ CREATE TABLE `shedule`.`student` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-
+/* Подгруппа */
 CREATE TABLE `shedule`.`subgroup` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `number` TINYINT(1) UNSIGNED NOT NULL,
@@ -77,6 +85,7 @@ CREATE TABLE `shedule`.`subgroup` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+/* Преподаватель */
 CREATE TABLE `shedule`.`teacher` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `FIO` NVARCHAR(100) NOT NULL,
@@ -96,23 +105,26 @@ CREATE TABLE `shedule`.`teacher` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+/* Аудитория */
 CREATE TABLE `shedule`.`auditorium` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `number` TINYINT(4) UNSIGNED NOT NULL,
+  `number` SMALLINT(4) UNSIGNED NOT NULL,
   `dormitory` NVARCHAR(4) NOT NULL,
   `character` NVARCHAR(1) NULL,
   PRIMARY KEY (`id`));
 
+/* Предмет */
 CREATE TABLE `shedule`.`subject` (
   `id` INT UNSIGNED NOT NULL,
   `name` NVARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
 
+/* Пара */
 CREATE TABLE `shedule`.`couple` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `time` TIME NOT NULL,
-  `type` ENUM('lecture', 'seminar', 'laboratory') NULL,
+  `type` ENUM('lecture', 'seminar', 'laboratory') NOT NULL,
   `subject_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `subject_id_idx` (`subject_id` ASC) VISIBLE,
@@ -122,6 +134,7 @@ CREATE TABLE `shedule`.`couple` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+/* Проходит */
 CREATE TABLE `shedule`.`istakingplace` (
   `subgroup_id` INT UNSIGNED NOT NULL,
   `couple_id` INT UNSIGNED NOT NULL,
@@ -152,7 +165,7 @@ CREATE TABLE `shedule`.`istakingplace` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
-/*Добавление атрибутов  */
+/*Добавление атрибутов для таблицы Пользователя */
 ALTER TABLE `shedule`.`user` 
 ADD COLUMN `delay_notify` INT UNSIGNED NOT NULL DEFAULT 60 AFTER `id`,
 ADD COLUMN `need_notify` TINYINT NOT NULL DEFAULT 0 AFTER `delay_notify`;
