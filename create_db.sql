@@ -65,7 +65,7 @@ CREATE TABLE `shedule`.`student` (
 
 
 CREATE TABLE `shedule`.`subgroup` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `number` TINYINT(1) UNSIGNED NOT NULL,
   `number_group` TINYINT(3) UNSIGNED NOT NULL,
   `course` TINYINT(1) UNSIGNED NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `shedule`.`subgroup` (
     ON UPDATE NO ACTION);
 
 CREATE TABLE `shedule`.`teacher` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `FIO` NVARCHAR(100) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   `department_id` INT UNSIGNED NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `shedule`.`teacher` (
     ON UPDATE NO ACTION);
 
 CREATE TABLE `shedule`.`auditorium` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `number` TINYINT(4) UNSIGNED NOT NULL,
   `dormitory` NVARCHAR(4) NOT NULL,
   `character` NVARCHAR(1) NULL,
@@ -109,7 +109,7 @@ CREATE TABLE `shedule`.`subject` (
   PRIMARY KEY (`id`));
 
 CREATE TABLE `shedule`.`couple` (
-  `id` INT UNSIGNED NOT NULL,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `date` DATE NOT NULL,
   `time` TIME NOT NULL,
   `type` ENUM('lecture', 'seminar', 'laboratory') NULL,
