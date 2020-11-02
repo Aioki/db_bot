@@ -169,3 +169,7 @@ CREATE TABLE `shedule`.`istakingplace` (
 ALTER TABLE `shedule`.`user` 
 ADD COLUMN `delay_notify` INT UNSIGNED NOT NULL DEFAULT 60 AFTER `id`,
 ADD COLUMN `need_notify` TINYINT NOT NULL DEFAULT 0 AFTER `delay_notify`;
+
+/*
+TODO: переделать поля в UNIQUE чтобы нельзя было плодить одинаковые экземпляры
+*/
