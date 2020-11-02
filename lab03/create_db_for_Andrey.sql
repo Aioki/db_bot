@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `eatapp_db`.`invitation` (
   `datetime` 		DATETIME NOT NULL,
   `place` 			INT 	 UNSIGNED NOT NULL,
   `who_will_pay` 	TINYINT  NULL,
-  `message` 		INT 	 NOT NULL,
+  `massage` 		INT 	 NOT NULL,
   `inviting_person` INT 	 UNSIGNED NOT NULL,
   `pecipient` 		INT 	 UNSIGNED NULL,
   `accepted` 		INT 	 NULL,
