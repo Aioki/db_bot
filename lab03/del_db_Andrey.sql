@@ -1,0 +1,16 @@
+USE `eatapp_db`;
+DROP TABLE egassem;
+DROP TABLE favorite_places;
+DROP TABLE invitation;
+DROP TABLE user;
+DROP TABLE preferences;
+DROP TABLE food_assortment;
+DROP TABLE dish;
+DROP TABLE role;
+DROP TABLE gender;
+DROP TABLE dish_type;
+DROP TABLE address;
+DROP TABLE gym;
+DROP TABLE interior;
+DROP TABLE cuisine_nationality;
+DROP DATABASE `eatapp_db`;
