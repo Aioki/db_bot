@@ -28,7 +28,7 @@ CREATE TABLE `shedule`.`user` (
 /* Çàìåòêà */
 CREATE TABLE `shedule`.`note` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `context` NVARCHAR(200) NULL,
+  `context` NVARCHAR(200) NOT NULL,
   `user_id` INT UNSIGNED NULL,
   PRIMARY KEY (`id`),
   INDEX `user_Id_idx` (`user_id` ASC) VISIBLE,
