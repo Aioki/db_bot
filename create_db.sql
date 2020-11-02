@@ -3,7 +3,7 @@ USE `shedule`;
 
 /* Ôàêóëüòåò */
 CREATE TABLE `shedule`.`faculty` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `name` NVARCHAR(80) NOT NULL,
   PRIMARY KEY (`id`));
 
