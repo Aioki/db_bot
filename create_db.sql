@@ -4,13 +4,13 @@ USE `shedule`;
 /* Ôàêóëüòåò */
 CREATE TABLE `shedule`.`faculty` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` NVARCHAR(45) NOT NULL,
+  `name` NVARCHAR(80) NOT NULL,
   PRIMARY KEY (`id`));
 
 /* Êàôåäğà */
-CREATE TABLE `shedule`.`dapartment` (
+CREATE TABLE `shedule`.`department` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
-  `name` NVARCHAR(45) NOT NULL,
+  `name` NVARCHAR(90) NOT NULL,
   `faculty_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `faculty_id_idx` (`faculty_id` ASC) VISIBLE,
@@ -47,7 +47,7 @@ CREATE TABLE `shedule`.`group` (
   INDEX `department_id_idx` (`department_id` ASC) VISIBLE,
   CONSTRAINT `department_id`
     FOREIGN KEY (`department_id`)
-    REFERENCES `shedule`.`dapartment` (`id`)
+    REFERENCES `shedule`.`department` (`id`)
     ON DELETE RESTRICT
     ON UPDATE NO ACTION);
 
@@ -88,7 +88,7 @@ CREATE TABLE `shedule`.`subgroup` (
 /* Ïğåïîäàâàòåëü */
 CREATE TABLE `shedule`.`teacher` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `FIO` NVARCHAR(100) NOT NULL,
+  `FIO` NVARCHAR(150) NOT NULL,
   `user_id` INT UNSIGNED NOT NULL,
   `department_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
@@ -101,7 +101,7 @@ CREATE TABLE `shedule`.`teacher` (
     ON UPDATE NO ACTION,
   CONSTRAINT `department_id1`
     FOREIGN KEY (`department_id`)
-    REFERENCES `shedule`.`dapartment` (`id`)
+    REFERENCES `shedule`.`department` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
