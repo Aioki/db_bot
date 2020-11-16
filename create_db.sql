@@ -89,7 +89,7 @@ CREATE TABLE `shedule`.`subgroup` (
 CREATE TABLE `shedule`.`teacher` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `FIO` NVARCHAR(150) NOT NULL,
-  `user_id` INT UNSIGNED NOT NULL,
+  `user_id` INT UNSIGNED NULL,
   `department_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `user_id2_idx` (`user_id` ASC) VISIBLE,
