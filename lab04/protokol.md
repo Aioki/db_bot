@@ -142,7 +142,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
     ```mysql
     SELECT COUNT(*)
     FROM couple 
-JOIN `subject` ON `subject`.`id` = `couple`.`subject_id` 
+    JOIN `subject` ON `subject`.`id` = `couple`.`subject_id` 
     JOIN `istakingplace` on `istakingplace`.`couple_id` =`couple`.`id` 
     JOIN `teacher` on `istakingplace`.`teacher_id` = `teacher`.`id`
     JOIN `time_call` on `time_call`.`number` = `istakingplace`.`num_couple`
@@ -187,27 +187,27 @@ JOIN `subject` ON `subject`.`id` = `couple`.`subject_id`
 
     ![](pic/14.png)
 
-    ## INSERTы для своей БД или БД одногруппника из предыдущей лабораторной работы (10 шт.+)
+## INSERTы для своей БД или БД одногруппника из предыдущей лабораторной работы (10 шт.+)
 
     [Скрипт](https://github.com/Aioki/db_bot/blob/main/add_temp_value.sql)
 
     Скриншоты результатов см предыдущую работу
 
 
-    ## UPDATE (с WHERE) (7 шт.), можно условно, например, изменить заранее созданные некорректные данные
+## UPDATE (с WHERE) (7 шт.), можно условно, например, изменить заранее созданные некорректные данные
 
 
-    ## DELETE с WHERE (5 шт.), можно условно, например, удалить заранее созданные некорректные данные
+## DELETE с WHERE (5 шт.), можно условно, например, удалить заранее созданные некорректные данные
 
-    ## SELECT, DISTINCT, WHERE, AND/OR/NOT, IN, BETWEEN, IS NULL, AS (25 шт.)
+## SELECT, DISTINCT, WHERE, AND/OR/NOT, IN, BETWEEN, IS NULL, AS (25 шт.)
 
-    ## LIKE (5-7 шт.)
+## LIKE (5-7 шт.)
 
-    ## COUNT, MAX, MIN, SUM, AVG (10 шт.)
+## COUNT, MAX, MIN, SUM, AVG (10 шт.)
 
-    ## GROUP BY, HAVING (7 шт.)
+## GROUP BY, HAVING (7 шт.)
 
-    ## ORDER BY, ASC|DESC (7 шт. +)
+## ORDER BY, ASC|DESC (7 шт. +)
 
     1. ```mysql
        SELECT * FROM `group` ORDER BY `course`;
@@ -250,15 +250,12 @@ JOIN `subject` ON `subject`.`id` = `couple`.`subject_id`
        ```
 
        ![](pic/ob7.png)
-
        
-
-    ## Вложенные SELECTы (3 шт.)
+## Вложенные SELECTы (3 шт.)
 
     1. ```mysql
        SELECT delay_notify FROM user WHERE ( id IN (SELECT `user_id` FROM shedule.student ) AND need_notify = 1);
        ```
-      ```
     
        ![](pic/select1.png)
     
@@ -276,15 +273,15 @@ JOIN `subject` ON `subject`.`id` = `couple`.`subject_id`
 
        
 
-    ## SELECT INTO (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
+## SELECT INTO (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
 
-    ## INSERT SELECT (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
+## INSERT SELECT (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
 
-    ## UNION (ALL), EXCEPT, INTERCEPT какой-то из них на выбор (2-3 шт.)
+## UNION (ALL), EXCEPT, INTERCEPT какой-то из них на выбор (2-3 шт.)
 
-    ## JOIN (20 шт.): INNER, OUTTER (LEFT, RIGHT, FULL), CROSS, NATURAL, в общем, разных
+## JOIN (20 шт.): INNER, OUTTER (LEFT, RIGHT, FULL), CROSS, NATURAL, в общем, разных
 
-    ## LIMIT (5 шт. +)
+## LIMIT (5 шт. +)
 
     1. ```mysql
        SELECT * FROM `group` ORDER BY `course` LIMIT 2;
