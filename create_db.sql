@@ -51,26 +51,6 @@ CREATE TABLE `shedule`.`group` (
     ON DELETE RESTRICT
     ON UPDATE NO ACTION);
 
-/* Ñòóäåíò */
-CREATE TABLE `shedule`.`student` (
-  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `user_id` INT UNSIGNED NOT NULL,
-  `number_group` TINYINT(3) UNSIGNED NOT NULL,
-  `course` TINYINT(1) UNSIGNED NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
-  INDEX `group_idx` (`number_group` ASC, `course` ASC) VISIBLE,
-  CONSTRAINT `user_id1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `shedule`.`user` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `group`
-    FOREIGN KEY (`number_group` , `course`)
-    REFERENCES `shedule`.`group` (`number` , `course`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
 /* Ïîäãğóïïà */
 CREATE TABLE `shedule`.`subgroup` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -84,6 +64,25 @@ CREATE TABLE `shedule`.`subgroup` (
     REFERENCES `shedule`.`group` (`number` , `course`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+/* Ñòóäåíò */
+CREATE TABLE `shedule`.`student` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` INT UNSIGNED NOT NULL,
+  `subgroup_id` INT UNSIGNED NOT NULL, 
+  PRIMARY KEY (`id`),
+  INDEX `user_id_idx` (`user_id` ASC) VISIBLE,
+  INDEX `subgroup_id12_idx` (`subgroup_id` ASC) VISIBLE,
+  CONSTRAINT `user_id1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `shedule`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `subgroup_id12`
+  FOREIGN KEY (`subgroup_id`)
+  REFERENCES `shedule`.`subgroup` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION);
 
 /* Ïğåïîäàâàòåëü */
 CREATE TABLE `shedule`.`teacher` (
