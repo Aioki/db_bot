@@ -189,9 +189,9 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 ## INSERTы для своей БД или БД одногруппника из предыдущей лабораторной работы (10 шт.+)
 
-    [Скрипт](https://github.com/Aioki/db_bot/blob/main/add_temp_value.sql)
+[Скрипт](https://github.com/Aioki/db_bot/blob/main/add_temp_value.sql)
 
-    Скриншоты результатов см предыдущую работу
+Скриншоты результатов см предыдущую работу
 
 
 ## UPDATE (с WHERE) (7 шт.), можно условно, например, изменить заранее созданные некорректные данные
@@ -209,69 +209,70 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 ## ORDER BY, ASC|DESC (7 шт. +)
 
-    1. ```mysql
-       SELECT * FROM `group` ORDER BY `course`;
-       ```
 
-       ![](pic/ob1.png)
+1. ```mysql
+   SELECT * FROM `group` ORDER BY `course`;
+   ```
 
-    2. ```mysql
-       SELECT * FROM `group` ORDER BY `number` DESC;
-       ```
+   ![](pic/ob1.png)
 
-       ![](pic/ob2.png)
+2. ```mysql
+   SELECT * FROM `group` ORDER BY `number` DESC;
+   ```
 
-    3.  ```mysql
-       SELECT * FROM `auditorium`  ORDER BY `dormitory`,`number`,`character`;
-        ```
+   ![](pic/ob2.png)
 
-       ![](pic/ob3.png)
+3.  ```mysql
+   SELECT * FROM `auditorium`  ORDER BY `dormitory`,`number`,`character`;
+    ```
 
-    4. ```mysql
-       SELECT * FROM department ORDER BY faculty_id;
-       ```
+   ![](pic/ob3.png)
 
-       ![](pic/ob4.png)
+4. ```mysql
+   SELECT * FROM department ORDER BY faculty_id;
+   ```
 
-    5. ```mysql
-       SELECT * FROM couple ORDER BY `type`;
-       ```
+   ![](pic/ob4.png)
 
-       ![](pic/ob5.png)
+5. ```mysql
+   SELECT * FROM couple ORDER BY `type`;
+   ```
 
-    6. ```mysql
-       SELECT * FROM subject ORDER BY `name` DESC;
-       ```
+   ![](pic/ob5.png)
 
-       ![](pic/ob6.png)
+6. ```mysql
+   SELECT * FROM subject ORDER BY `name` DESC;
+   ```
 
-    7. ```mysql
-       SELECT * FROM user ORDER BY `delay_notify` DESC;
-       ```
+   ![](pic/ob6.png)
 
-       ![](pic/ob7.png)
-       
+7. ```mysql
+   SELECT * FROM user ORDER BY `delay_notify` DESC;
+   ```
+
+   ![](pic/ob7.png)
+   
 ## Вложенные SELECTы (3 шт.)
 
-    1. ```mysql
-       SELECT delay_notify FROM user WHERE ( id IN (SELECT `user_id` FROM shedule.student ) AND need_notify = 1);
-       ```
-    
-       ![](pic/select1.png)
-    
-    2. ```mysql
-       SELECT `type` FROM couple WHERE (subject_id IN (SELECT id FROM subject WHERE(`name` = "Химия")));
-      ```
+1. ```mysql
+   SELECT delay_notify FROM user WHERE ( id IN (SELECT `user_id` FROM shedule.student ) AND need_notify = 1);
+   ```
 
-       ![](pic/select2.png)
+   ![](pic/select1.png)
 
-    3. ```mysql
-       
-       ```
+2. ```mysql
+   SELECT `type` FROM couple WHERE (subject_id IN (SELECT id FROM subject WHERE(`name` = "Химия")));
+  ```
 
-       ![]()
+   ![](pic/select2.png)
 
-       
+3. ```mysql
+   
+   ```
+
+   ![]()
+
+   
 
 ## SELECT INTO (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
 
@@ -283,32 +284,32 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 ## LIMIT (5 шт. +)
 
-    1. ```mysql
-       SELECT * FROM `group` ORDER BY `course` LIMIT 2;
-       ```
+1. ```mysql
+   SELECT * FROM `group` ORDER BY `course` LIMIT 2;
+   ```
 
-       ![](pic/limit1.png)
+   ![](pic/limit1.png)
 
-    2. ```mysql
-       SELECT * FROM `note` LIMIT 5;
-       ```
+2. ```mysql
+   SELECT * FROM `note` LIMIT 5;
+   ```
 
-       ![](pic/limit2.png)
+   ![](pic/limit2.png)
 
-    3. ```mysql
-       SELECT * FROM `teacher` LIMIT 8;
-       ```
+3. ```mysql
+   SELECT * FROM `teacher` LIMIT 8;
+   ```
 
-       ![](pic/limit3.png)
+   ![](pic/limit3.png)
 
-    4. ```mysql
-       SELECT * FROM `auditorium`  ORDER BY `dormitory`,`number`,`character` LIMIT 3;
-       ```
+4. ```mysql
+   SELECT * FROM `auditorium`  ORDER BY `dormitory`,`number`,`character` LIMIT 3;
+   ```
 
-       ![](pic/limit4.png)
+   ![](pic/limit4.png)
 
-    5. ```mysql
-       SELECT * FROM couple LIMIT 1;
-       ```
+5. ```mysql
+   SELECT * FROM couple LIMIT 1;
+   ```
 
-       ![](pic/limit5.png)
+   ![](pic/limit5.png)
