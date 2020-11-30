@@ -222,9 +222,9 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
    ![](pic/ob2.png)
 
-3.  ```mysql
+3. ```mysql
    SELECT * FROM `auditorium`  ORDER BY `dormitory`,`number`,`character`;
-    ```
+   ```
 
    ![](pic/ob3.png)
 
@@ -262,15 +262,9 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 2. ```mysql
    SELECT `type` FROM couple WHERE (subject_id IN (SELECT id FROM subject WHERE(`name` = "Химия")));
-  ```
-
-   ![](pic/select2.png)
-
-3. ```mysql
-   
    ```
 
-   ![]()
+   ![](pic/select2.png)
 
    
 
