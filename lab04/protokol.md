@@ -21,7 +21,7 @@ INSERT INTO student(user_id,subgroup_id) VALUE(95824080,6);
 UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Дмитрий Васильевич');
 ```
 
-![](pic\2.png)
+![](pic/2.png)
 
 3. Удалить себя из студента/преподавателя:
 
@@ -31,7 +31,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    DELETE FROM `student` WHERE (`user_id` = '95824080');
    ```
 
-   ![](pic\3.png)
+   ![](pic/3.png)
 
    
 
@@ -43,7 +43,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    INSERT INTO note(context,user_id) VALUE('это',1);
    ```
 
-   ![](pic\4.png)
+   ![](pic/4.png)
 
 5. Удалить заметку
 
@@ -53,7 +53,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    DELETE FROM `note` WHERE (`user_id`=1 AND `context`= `это`); 
    ```
 
-   ![](pic\5.png)
+   ![](pic/5.png)
 
 6. Выбрать группу и подгруппу
 
@@ -64,7 +64,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    
    ```
 
-   ![](pic\6.png)
+   ![](pic/6.png)
 
 ### Справочные
 
