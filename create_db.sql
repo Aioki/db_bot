@@ -11,7 +11,7 @@ CREATE TABLE `shedule`.`faculty` (
 CREATE TABLE `shedule`.`department` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT ,
   `name` NVARCHAR(90) NOT NULL,
-  `faculty_id` INT NOT NULL,
+  `faculty_id` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `faculty_id_idx` (`faculty_id` ASC) VISIBLE,
   CONSTRAINT `faculty_id`
