@@ -207,7 +207,11 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
    ![](pic/upd1.png)
 
-2. 
+2. UPDATE `shedule`.`istakingplace` SET `auditorium_id` = '2' WHERE (`subgroup_id` = '5') and (`couple_id` = '4') and (`teacher_id` = '3') and (`auditorium_id` = '7');
+   UPDATE `shedule`.`istakingplace` SET `auditorium_id` = '3' WHERE (`subgroup_id` = '6') and (`couple_id` = '6') and (`teacher_id` = '9') and (`auditorium_id` = '9');
+   
+3. UPDATE `shedule`.`istakingplace` SET `num_couple` = '1' WHERE (`subgroup_id` = '1') and (`couple_id` = '7') and (`teacher_id` = '2') and (`auditorium_id` = '3');
+   UPDATE `shedule`.`istakingplace` SET `num_couple` = '3' WHERE (`subgroup_id` = '4') and (`couple_id` = '10') and (`teacher_id` = '8') and (`auditorium_id` = '8');
 
 
 ## DELETE с WHERE (5 шт.), можно условно, например, удалить заранее созданные некорректные данные
@@ -419,65 +423,81 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 ## JOIN (20 шт.): INNER, OUTTER (LEFT, RIGHT, FULL), CROSS, NATURAL, в общем, разных
 
 1. ```mysql
-   SELECT;
+   SELECT FIO as teacher_name, date, type, dormitory,number,`character` from istakingplace 
+   JOIN `teacher` on `istakingplace`.`teacher_id` = `teacher`.`id`
+   JOIN couple ON couple.id = istakingplace.couple_id
+   RIGHT JOIN auditorium on istakingplace.auditorium_id = auditorium.id;
    ```
    
    ![](pic/join1.png)
-
+   
 2. ```mysql
-   SELECT
+   SELECT `department`.`name` as `depart_name`, `faculty`.`name` as `faculty_name` FROM department 
+   CROSS JOIN faculty;
    ```
    
    ![](pic/join2.png)
-
-3. ```mysql
-   SELECT
-   ```
    
-   ![](pic/join3.png)
+3. ```mysql
+   SELECT user_id, course, number_group from student
+   JOIN subgroup on student.subgroup_id = subgroup.id;
+   ```
+
+![](pic/join3.png)
 
 4. ```mysql
-   SELECT
+   SELECT subgroup.number, subgroup.course,`group`.number FROM shedule.subgroup
+   RIGHT JOIN `group` on subgroup.number_group = `group`.`number` and subgroup.course = `group`.course;
    ```
    
-   ![](pic/join4.png)
+
+![](pic/join4.png)
 
 5. ```mysql
-   SELECT
+   select * from time_call LEFT join istakingplace on number = istakingplace.num_couple;
    ```
    
    ![](pic/join5.png)
 
 6. ```mysql
-   SELECT
+   SELECT user.id, FIO FROM shedule.user 
+   LEFT JOIN teacher on user.id = teacher.user_id;
    ```
    
-   ![](pic/join6.png)
+
+![](pic/join6.png)
 
 7. ```mysql
-   SELECT
+   SELECT name as couple, type, `date` FROM shedule.couple
+   JOIN subject ON subject.id = couple.subject_id
+   LEFT JOIN istakingplace on couple.id = istakingplace.couple_id;
    ```
-   
-   ![](pic/join7.png)
 
+   ![](pic/join7.png)
+   
 8. ```mysql
-   SELECT
+   SELECT type,name,`subgroup`.`number` as subgroup,date FROM shedule.istakingplace
+   JOIN couple ON couple.id = istakingplace.couple_id
+   JOIN subject ON subject.id = couple.subject_id
+   JOIN `subgroup` on `istakingplace`.`subgroup_id` = `subgroup`.`id`;
    ```
    
    ![](pic/join8.png)
-
-9. ```mysql
-   SELECT
-   ```
    
-   ![](pic/join9.png)
-
+9. ```mysql
+   SELECT * FROM shedule.couple
+   NATURAL JOIN subject;
+```
+   
+![](pic/join9.png)
+   
 10. ```mysql
-    SELECT
+    SELECT * FROM shedule.department
+    NATURAL JOIN teacher;
     ```
     
-    ![](pic/join10.png)
-
+![](pic/join10.png)
+    
 11. ```mysql
     SELECT
     ```
