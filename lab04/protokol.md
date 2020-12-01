@@ -119,8 +119,10 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 10. Показать расписание на неделю
 	
 	```mysql
-	SELECT;
+	SELECT * FROM shedule.istakingplace WHERE (`date` between 20201102 and 20201102 + interval 1 week);
 	```
+	
+![](pic/15.png)
 
    ### Справочно-расчетные
 
@@ -397,7 +399,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    select delay_notify, count(*) as count from user group by delay_notify order by delay_notify;
    ```
 
-   ![](pic/arif8.ong)
+   ![](pic/arif8.png)
 
 9. ```mysql
    select avg(count) from (select delay_notify, count(*) as count from user group by delay_notify) as count_table;
