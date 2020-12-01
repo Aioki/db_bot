@@ -122,6 +122,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 	SELECT * FROM shedule.istakingplace WHERE (`date` between 20201102 and 20201102 + interval 1 week);
 	```
 	
+
 ![](pic/15.png)
 
    ### Справочно-расчетные
@@ -343,7 +344,44 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 
 
-## LIKE (5-7 шт.)
+## LIKE (6 шт.+)
+
+1. ```mysql
+   select * from teacher where FIO like '%Дмитр%';
+   ```
+   
+   ![](pic/like1.png)
+
+2. ```mysql
+   SELECT * from faculty where name like '%трансп%';
+   ```
+   
+   ![](pic/like2.png)
+
+3. ```mysql
+   select * from note where context like '___';
+   ```
+   
+   ![](pic/like3.png)
+
+4. ```mysql
+   select * from auditorium where dormitory like '_';
+   ```
+   
+   ![](pic/like4.png)
+
+5. ```mysql
+   select * from teacher where FIO like '%вна';
+   ```
+   
+   ![](pic/like5.png)
+
+6. ```mysql
+   SELECT * from faculty where name like 'техно%';
+   ```
+   
+   ![](pic/like6.png)
+
 
 ## COUNT, MAX, MIN, SUM, AVG (10 шт. +)
 
