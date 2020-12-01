@@ -210,11 +210,61 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
    ![](pic/upd1.png)
 
-2. UPDATE `shedule`.`istakingplace` SET `auditorium_id` = '2' WHERE (`subgroup_id` = '5') and (`couple_id` = '4') and (`teacher_id` = '3') and (`auditorium_id` = '7');
-   UPDATE `shedule`.`istakingplace` SET `auditorium_id` = '3' WHERE (`subgroup_id` = '6') and (`couple_id` = '6') and (`teacher_id` = '9') and (`auditorium_id` = '9');
+2. ```mysql
+   UPDATE `shedule`.`istakingplace` SET `auditorium_id` = '2' WHERE (`subgroup_id` = '5') and (`couple_id` = '4') and (`teacher_id` = '3') and (`auditorium_id` = '7');
+   ```
    
-3. UPDATE `shedule`.`istakingplace` SET `num_couple` = '1' WHERE (`subgroup_id` = '1') and (`couple_id` = '7') and (`teacher_id` = '2') and (`auditorium_id` = '3');
-   UPDATE `shedule`.`istakingplace` SET `num_couple` = '3' WHERE (`subgroup_id` = '4') and (`couple_id` = '10') and (`teacher_id` = '8') and (`auditorium_id` = '8');
+   ![](pic/upd2.png)
+   
+3. ```mysql
+   UPDATE `shedule`.`istakingplace` SET `num_couple` = '1' WHERE (`subgroup_id` = '1') and (`couple_id` = '7') and (`teacher_id` = '2') and (`auditorium_id` = '3');
+   ```
+   
+   ![](pic/upd2.png)
+
+4. ```mysql
+   UPDATE note set user_id = 95824080 WHERE context like '___';
+   ```
+   
+   ![](pic/upd4.png)
+
+5. ```mysql
+   UPDATE auditorium set `character` = null where dormitory = "В"; 
+   ```
+   
+   ![](pic/upd5.png)
+
+6. ```mysql
+   UPDATE subject set name = "ООаиП" where name = "Химия";
+   ```
+   
+   ![](pic/upd6.png)
+
+7. ```mysql
+   UPDATE couple set type = "seminar" WHERE (type = "lecture");
+   ```
+   
+   ![](pic/upd7.png)
+
+8. ```mysql
+   UPDATE user set need_notify = 0 where (need_notify = 1);
+   ```
+   
+   ![](pic/upd8.png)
+
+9. ```mysql
+   UPDATE user set need_notify = 1 where (delay_notify != 60);
+   ```
+   
+   ![](pic/upd9.png)
+
+10. ```mysql
+    UPDATE note set context = "delete" where (context like '___');
+    ```
+    
+    ![](pic/upd10.png)
+    
+    
 
 
 ## DELETE с WHERE (5 шт.), можно условно, например, удалить заранее созданные некорректные данные
