@@ -202,7 +202,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 Скриншоты результатов см предыдущую работу
 
-## UPDATE (с WHERE) (7 шт.), можно условно, например, изменить заранее созданные некорректные данные
+## UPDATE (с WHERE) (10 шт.+), можно условно, например, изменить заранее созданные некорректные данные
 
 1. ```mysql
    UPDATE `teacher` SET `user_id` = NULL WHERE (`id` = '1');
@@ -266,8 +266,69 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
     
     
 
+## DELETE с WHERE (10 шт.+), можно условно, например, удалить заранее созданные некорректные данные
 
-## DELETE с WHERE (5 шт.), можно условно, например, удалить заранее созданные некорректные данные
+1. ```mysql
+   DELETE FROM note where (context = "delete");
+   ```
+   
+   ![](pic/del1.png)
+
+2. ```mysql
+   DELETE from couple where (id = 8);
+   ```
+   
+   ![](pic/del2.png)
+
+3. ```mysql
+   DELETE from subject where name = "Сети и телекоммуникации";
+   ```
+   
+   ![](pic/del3.png)
+
+4. ```mysql
+   DELETE FROM newtable where department_id = 5;
+   ```
+   
+   ![](pic/del4.png)
+
+5. ```mysql
+   DELETE FROM newtable where user_id is NULL;
+   ```
+   
+   ![](pic/del5.png)
+
+6. ```mysql
+   DELETE from istakingplace where (auditorium_id = 2);
+   ```
+   
+   ![](pic/del6.png)
+
+7. ```mysql
+   DELETE from student where user_id = 6;
+   ```
+   
+   ![](pic/del7.png)
+
+8. ```mysql
+   DELETE from subgroup where number = 1 and number_group = 61 and course = 1;
+   ```
+   
+   ![](pic/del8.png)
+
+9. ```mysql
+   DELETE from newtable where FIO = "Шубин Любомир Тимофеевич";
+   ```
+   
+   ![](pic/del9.png)
+
+10. ```mysql
+    DELETE from newtable where 1=1;
+    ```
+    
+    ![](pic/del10.png)
+
+
 
 ## SELECT, DISTINCT, WHERE, AND/OR/NOT, IN, BETWEEN, IS NULL, AS (25 шт.)
 1. ```mysql
