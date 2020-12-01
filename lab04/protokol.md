@@ -343,9 +343,101 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 ## LIKE (5-7 шт.)
 
-## COUNT, MAX, MIN, SUM, AVG (10 шт.)
+## COUNT, MAX, MIN, SUM, AVG (10 шт. +)
 
-## GROUP BY, HAVING (7 шт.)
+1. ```mysql
+   select need_notify, count(*) as count from user group by need_notify;
+   ```
+
+   ![](pic/arif1.png)
+
+2. ```mysql
+   select count(*) as has_account from teacher where user_id >= 1;
+   ```
+
+   ![](pic/arif2.png)
+
+3. ```mysql
+   select max(num_couple) as last_couple from istakingplace where date = 20201102;
+   ```
+
+   ![](pic/arif3.png)
+
+4. ```mysql
+   select min(num_couple) as last_couple from istakingplace where date = 20201102;
+   ```
+
+   ![](pic/arif4.png)
+
+5. ```mysql
+   select max(delay_notify) from user;
+   ```
+
+   ![](pic/arif5.png)
+
+6. ```mysql
+   select min(delay_notify) from user where delay_notify>0;
+   ```
+
+   ![](pic/arif6.png)
+
+7. ```mysql
+   SELECT date, COUNT(`name`) as `count`
+   	  FROM couple 
+   	  JOIN `subject` ON `subject`.`id` = `couple`.`subject_id` 
+   	  JOIN `istakingplace` on `istakingplace`.`couple_id` =`couple`.`id` 
+   	  JOIN `teacher` on `istakingplace`.`teacher_id` = `teacher`.`id`
+   	  WHERE ( `date` BETWEEN 20201028 AND date_add(20201028,INTERVAL 7 DAY))
+         GROUP BY `date`;
+   ```
+
+   ![](pic/arif7.png)
+
+8. ```mysql
+   select delay_notify, count(*) as count from user group by delay_notify order by delay_notify;
+   ```
+
+   ![](pic/arif8.ong)
+
+9. ```mysql
+   select avg(count) from (select delay_notify, count(*) as count from user group by delay_notify) as count_table;
+   ```
+
+   ![](pic/arif9.png)
+
+10. ```mysql
+    select dormitory, count(*) as count from auditorium group by dormitory order by dormitory;
+    ```
+
+    ![](pic/arif10.png)
+
+    
+
+## GROUP BY, HAVING (4 шт.+)
+
+1. ```mysql
+   select type, count(*) from couple group by type;
+   ```
+
+   ![](pic/gb1.png)
+
+2. ```mysql
+   select * from istakingplace group by num_couple;
+   ```
+
+   ![](pic/gb2.png)
+
+3. ```mysql
+   select * from user group by need_notify having max(delay_notify);
+   ```
+
+   ![](pic/gb3.png)
+
+4. ```mysql
+   select * from `group` group by number having max(course);
+   ```
+
+   ![](pic/gb4.png)
 
 ## ORDER BY, ASC|DESC (7 шт. +)
 
@@ -413,12 +505,46 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    
    ![](pic/select3.png)
 
-## SELECT INTO (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
+## SELECT INTO (2 шт. +), можно в какую-то тестовую, специально созданную таблицу
 
+1. ```mysql
+   -- create template table
+   create table newtable select * from teacher where id <6;
+   ```
 
-## INSERT SELECT (1-2 шт.), можно в какую-то тестовую, специально созданную таблицу
+   ![](pic/selinto1.png)
 
-## UNION (ALL), EXCEPT, INTERCEPT какой-то из них на выбор (2-3 шт.)
+2. ```mysql
+   create table temptable select * from user where 1 = 0;
+   ```
+
+   ![](pic/selinto2.png)
+
+## INSERT SELECT (2 шт.+), можно в какую-то тестовую, специально созданную таблицу
+
+1. ```mysql
+   INSERT INTO temptable select * from user where delay_notify = 60;
+   ```
+
+   ![](pic/insel1.png)
+
+2. ```mysql
+   INSERT INTO newtable select * from teacher where id = 9;
+   ```
+
+   ![](pic/insel2.png)
+
+   
+
+## UNION (ALL), EXCEPT, INTERCEPT какой-то из них на выбор (1 шт.+)
+
+1. ```mysql
+   SELECT id,name from department
+   UNION ALL
+   SELECT * from faculty;
+   ```
+
+   ![](pic/union1.png)
 
 ## JOIN (15 шт.+): INNER, OUTTER (LEFT, RIGHT, FULL), CROSS, NATURAL, в общем, разных
 
