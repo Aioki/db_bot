@@ -420,7 +420,7 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 
 ## UNION (ALL), EXCEPT, INTERCEPT какой-то из них на выбор (2-3 шт.)
 
-## JOIN (20 шт.): INNER, OUTTER (LEFT, RIGHT, FULL), CROSS, NATURAL, в общем, разных
+## JOIN (15 шт.+): INNER, OUTTER (LEFT, RIGHT, FULL), CROSS, NATURAL, в общем, разных
 
 1. ```mysql
    SELECT FIO as teacher_name, date, type, dormitory,number,`character` from istakingplace 
@@ -487,76 +487,57 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
 9. ```mysql
    SELECT * FROM shedule.couple
    NATURAL JOIN subject;
-```
+   ```
    
+
 ![](pic/join9.png)
-   
+
 10. ```mysql
     SELECT * FROM shedule.department
     NATURAL JOIN teacher;
     ```
-    
-![](pic/join10.png)
+
+    ![](pic/join10.png)
     
 11. ```mysql
-    SELECT
+    SELECT * FROM user
+    LEFT JOIN note on user.id = note.user_id;
     ```
     
     ![](pic/join11.png)
-
+    
 12. ```mysql
-    SELECT
+    select name,type from couple
+    join subject on subject_id = subject.id;
     ```
     
+
     ![](pic/join12.png)
-
+    
 13. ```mysql
-    SELECT
+    SELECT FIO, faculty.name as faculty from teacher
+    join department on department_id = department.id
+    join faculty on faculty_id = faculty.id;
     ```
-    
+
     ![](pic/join13.png)
-
+    
 14. ```mysql
-    SELECT
+    SELECT date,time_start from istakingplace
+    join time_call on num_couple = number;
     ```
     
+
     ![](pic/join14.png)
-
+    
 15. ```mysql
-    SELECT
+    SELECT course,number_group,number as subgroup, FIO from subgroup
+    JOIN istakingplace on subgroup.id = istakingplace.subgroup_id
+    JOIN `teacher` on `istakingplace`.`teacher_id` = `teacher`.`id`;
     ```
-    
+
     ![](pic/join15.png)
-
-16. ```mysql
-    SELECT
-    ```
     
-    ![](pic/join16.png)
-
-17. ```mysql
-    SELECT
-    ```
-    
-    ![](pic/join17.png)
-
-18. ```mysql
-    SELECT
-    ```
-    
-    ![](pic/join18.png)
-
-19. ```mysql
-    SELECT
-    ```
-    
-    ![](pic/join19.png)
-
-20. ```mysql
-    SELECT
-    ```
-    
-    ![](pic/join20.png)
 
 
 
