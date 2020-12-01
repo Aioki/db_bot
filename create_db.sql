@@ -130,6 +130,13 @@ CREATE TABLE `shedule`.`couple` (
     REFERENCES `shedule`.`subject` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+    
+CREATE TABLE `shedule`.`time_call` (
+  `number` INT UNSIGNED NOT NULL,
+  `time_start` TIME NOT NULL,
+  `time_end` TIME NOT NULL,
+  PRIMARY KEY (`number`));
 
 /* Ïğîõîäèò */
 CREATE TABLE `shedule`.`istakingplace` (
@@ -137,6 +144,8 @@ CREATE TABLE `shedule`.`istakingplace` (
   `couple_id` INT UNSIGNED NOT NULL,
   `teacher_id` INT UNSIGNED NOT NULL,
   `auditorium_id` INT UNSIGNED NOT NULL,
+  `date` DATE NOT NULL,
+  `num_couple` INT UNSIGNED NOT NULL,
   PRIMARY KEY (`subgroup_id`, `couple_id`, `teacher_id`, `auditorium_id`),
   INDEX `teacher_id_idx` (`teacher_id` ASC) VISIBLE,
   INDEX `couple_id_idx` (`couple_id` ASC) VISIBLE,
@@ -160,15 +169,20 @@ CREATE TABLE `shedule`.`istakingplace` (
     FOREIGN KEY (`auditorium_id`)
     REFERENCES `shedule`.`auditorium` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `time_call_id1`
+    FOREIGN KEY (`num_couple`)
+    REFERENCES `shedule`.`time_call` (`number`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+
 
 /*Äîáàâëåíèå àòğèáóòîâ äëÿ òàáëèöû Ïîëüçîâàòåëÿ */
 ALTER TABLE `shedule`.`user` 
 ADD COLUMN `delay_notify` INT UNSIGNED NOT NULL DEFAULT 60 AFTER `id`,
 ADD COLUMN `need_notify` TINYINT NOT NULL DEFAULT 0 AFTER `delay_notify`;
 
-ALTER TABLE `shedule`.`istakingplace` 
-ADD COLUMN `datetime` DATETIME NOT NULL AFTER `auditorium_id`;
 
 /*
 TODO: переделать поля в UNIQUE чтобы нельзя было плодить одинаковые экземпляры
