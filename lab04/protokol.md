@@ -849,3 +849,56 @@ UPDATE `teacher` SET `user_id` = '95824080' WHERE (`FIO` = 'Литовкин Д�
    ```
 
    ![](pic/limit5.png)
+   
+   # Отчет
+   
+   Вывести расписание у преподавателя по конкретному типу пары у конкретного курса
+   
+   ```mysql
+   SELECT date, time_start, time_end,subject.name, type ,dormitory, auditorium.number, `character`,course, number_group from istakingplace
+   JOIN `couple` on `istakingplace`.`couple_id` =`couple`.`id` 
+   JOIN subject ON subject.id = couple.subject_id
+   JOIN auditorium on istakingplace.auditorium_id = auditorium.id
+   JOIN `teacher` on `istakingplace`.`teacher_id` = `teacher`.`id`
+   JOIN `time_call` on `time_call`.`number` = `istakingplace`.`num_couple`
+   JOIN subgroup on `istakingplace`.`subgroup_id` = subgroup.id
+   WHERE (course = 2 and FIO = "Литовкин Дмитрий Васильевич" and type = "seminar");
+   ```
+   
+   ![](pic/otchet1.png)
+   
+   Полноценное расписание
+   
+   ```mysql
+   SELECT date, time_start, time_end,subject.name, type, FIO ,dormitory, auditorium.number, `character`,course, number_group FROM shedule.istakingplace 
+   JOIN `couple` on `istakingplace`.`couple_id` =`couple`.`id` 
+   JOIN subject ON subject.id = couple.subject_id
+   JOIN auditorium on istakingplace.auditorium_id = auditorium.id
+   JOIN `teacher` on `istakingplace`.`teacher_id` = `teacher`.`id`
+   JOIN `time_call` on `time_call`.`number` = `istakingplace`.`num_couple`
+   JOIN subgroup on `istakingplace`.`subgroup_id` = subgroup.id
+   WHERE (`date` between 20201102 and 20201102 + interval 1 week)
+   ORDER BY date,time_start;
+   ```
+   
+   ![](pic/otchet2.png)
+   
+   Загруженность аудитории за заданный период времени
+   
+   ```mysql
+   -- Получаем аудитории, в которых проходят пары в заданный период времени и считаем количество
+   SELECT dormitory, number, `character`, count(*) as count from auditorium
+   LEFT JOIN istakingplace on istakingplace.auditorium_id = auditorium.id
+   WHERE (`date` between 20201102 and 20201102 + interval 1 week)
+   GROUP BY dormitory, number, `character`
+   UNION ALL
+   -- Показываем аудитории, которые не вошли в этот список и говорим, что там пар нет
+   SELECT dormitory, number, `character`, 0 from auditorium
+   LEFT JOIN istakingplace on istakingplace.auditorium_id = auditorium.id
+   WHERE `date` not between 20201102 and 20201102 + interval 1 week or date is null
+   GROUP BY dormitory, number, `character`
+   ORDER BY dormitory, number, `character`;
+   ```
+   
+   ![](pic/otchet3.png)
+
